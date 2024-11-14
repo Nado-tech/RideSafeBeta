@@ -1,4 +1,4 @@
-const Alert = require('../models/alertModel'); // If using a model to store alerts
+const Alert = require('../models/alertModels'); // If using a model to store alerts
 const { sendEmailToAuthorities, sendSMSToAuthorities } = require('../services/notificationService'); // Notification service
 
 // Controller method to handle alert

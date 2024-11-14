@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passenger Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Passenger Login</h1>
+  </header>
+
+  <main>
+    <section id="login-form">
+      <input type="text" id="identifier" placeholder="Email or Phone" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button onclick="passengerLogin()">Login</button>
+      <p id="login-error"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 RideSafe</p>
+  </footer>
+
+  <script src="passenger-login.js"></script>
+</body>
+</html>

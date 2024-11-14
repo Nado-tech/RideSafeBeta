@@ -4,16 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Driver Signup</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="driver-signup.css">
 </head>
 <body>
   <div class="form-container">
     <h2>Driver Signup</h2>
     <form id="driverSignupForm">
       <input type="text" id="email" placeholder="Email" required>
-      <input type="text" id="phoneNumber" placeholder="Phone Number" required>
+       <input type="text" id="nin" placeholder="National Identification Number (NIN)" required>
+       <input type="text" id="phoneNumber" placeholder="Phone Number" required>
       <input type="password" id="password" placeholder="Password" required>
       <input type="text" id="plateNumber" placeholder="Plate Number" required>
+     
       <button type="submit">Sign Up</button>
     </form>
     <p id="errorMessage"></p>

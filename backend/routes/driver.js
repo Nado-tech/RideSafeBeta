@@ -3,7 +3,7 @@
 const express = require('express');
 const axios = require('axios');  // Import axios to make HTTP requests
 const Driver = require('../models/driver');
-const { generateUniqueToken } = require('../services/tokenService');
+const { generateUniqueToken } = require('../services/tokenServices');
 const router = express.Router();
 
 // FRSC API endpoint and key (replace with actual endpoint and API key)

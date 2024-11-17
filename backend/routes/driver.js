@@ -10,6 +10,18 @@ const router = express.Router();
 const FRSC_API_URL = 'https://frsc.gov.ng/api/validate-plate';
 const FRSC_API_KEY = 'your-frsc-api-key';  // Replace with your FRSC API key
 
+router.post('/signup', async (req, res) => {
+  const { email, phoneNumber, password, plateNumber } = req.body;
+
+  // Validate required fields
+  if (!email || !phoneNumber || !password || !plateNumber) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
+
+  // Rest of your code...
+});
+
+
 // Helper function to verify plate number via FRSC API
 async function verifyPlateNumber(plateNumber) {
   try {
@@ -17,12 +29,18 @@ async function verifyPlateNumber(plateNumber) {
       plateNumber: plateNumber,
       apiKey: FRSC_API_KEY,
     });
+
+    // Check if the response data is valid before using it
+    if (!response || !response.data || !response.data.isValid) {
+      throw new Error('Invalid plate number');
+    }
     return response.data;  // Return response data from FRSC API
   } catch (error) {
     console.error('Error verifying plate number:', error);
     throw new Error('Unable to verify plate number');
   }
 }
+
 
 // Driver signup route
 router.post('/signup', async (req, res) => {

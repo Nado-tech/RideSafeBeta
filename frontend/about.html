@@ -23,11 +23,44 @@
         }
         
         header {
-          text-align: center;
-          background-color: #0078d7;
-          color: #fff;
-          padding: 20px;
-        }
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header ul {
+    display: flex;
+    list-style: none;
+}
+
+header ul li {
+    margin-left: 20px;
+}
+
+header ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+header .logo img {
+    width: 150px;
+}
         
         header h1 {
           margin: 10px 0;
@@ -154,24 +187,19 @@
     <header>
       <nav>
         <div class="logo">
-          <img src="" alt="RideSafe Logo" />
-        </div>
+          <img src="" alt="RideSafe Logo" sizes="">/>
+              </div>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
       </nav>
+      <section class="hero"></section>
       <h1>RIDESAFE</h1>
-      <p><i>NO CHANCE FOR ONE CHANCE</i></p>
-
-      <p>
-        Your safety is our priority. Verify drivers easily with our token
-        system.
-      </p>
-      <h1>ABOUT US</h1>
+      <p>NO CHANCE FOR ONE CHANCE</p>
     </header>
-
+<h1>ABOUT US</h1>
     <main>
       <p>
         RideSafe is a digital platform designed to enhance the safety of

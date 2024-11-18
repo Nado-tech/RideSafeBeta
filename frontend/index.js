@@ -1,8 +1,29 @@
 // Sample default data for testing
+// Sample default data for testing
 const defaultTokens = {
-  "12345": { driverName: "John Doe" },
-  "67890": { driverName: "Jane Smith" }
+  "12345": { driverName: "John Doe", vehicle: "Toyota Camry", licensePlate: "ABJ-123-XY" },
+  "67890": { driverName: "Jane Smith", vehicle: "Honda Accord", licensePlate: "LAG-456-ZZ" }
 };
+
+const defaultDrivers = [
+  { name: "John Doe", phone: "08012345678", vehicle: "Toyota Camry", licensePlate: "ABJ-123-XY", token: "12345" },
+  { name: "Jane Smith", phone: "08123456789", vehicle: "Honda Accord", licensePlate: "LAG-456-ZZ", token: "67890" }
+];
+
+const defaultPassengers = [
+  { name: "Alice Green", phone: "07098765432", email: "alice.green@example.com" },
+  { name: "Bob Brown", phone: "09087654321", email: "bob.brown@example.com" }
+];
+
+// Function to fetch default data (accessible but not displayed)
+function getDefaultData() {
+  return {
+    drivers: defaultDrivers,
+    passengers: defaultPassengers,
+    tokens: defaultTokens
+  };
+}
+
 
 // Redirect functions for registration and login pages
 function navigateToDriverLogin() {
@@ -33,7 +54,13 @@ async function verifyToken() {
 
   // Simulated token verification
   if (defaultTokens[token]) {
-    resultElement.innerText = `Driver Verified: ${defaultTokens[token].driverName}`;
+    const driver = defaultTokens[token];
+    resultElement.innerHTML = `
+      Driver Verified:<br>
+      <strong>Name:</strong> ${driver.driverName}<br>
+      <strong>Vehicle:</strong> ${driver.vehicle}<br>
+      <strong>License Plate:</strong> ${driver.licensePlate}
+    `;
     resultElement.style.color = "green";
   } else {
     resultElement.innerHTML = `
@@ -70,3 +97,38 @@ async function sendAlertToAuthorities(photo = null, latitude = null, longitude =
   document.getElementById("verificationResult").innerText =
     "Simulated alert sent to authorities successfully.";
 }
+
+// Function to display default drivers and passengers (for testing purposes)
+function displayDefaultData() {
+  const driverSection = document.getElementById("drivers");
+  const passengerSection = document.getElementById("passengers");
+
+  // Populate drivers
+  driverSection.innerHTML = "<h3>Default Drivers</h3>";
+  defaultDrivers.forEach(driver => {
+    driverSection.innerHTML += `
+      <p>
+        <strong>Name:</strong> ${driver.name}<br>
+        <strong>Phone:</strong> ${driver.phone}<br>
+        <strong>Vehicle:</strong> ${driver.vehicle}<br>
+        <strong>License Plate:</strong> ${driver.licensePlate}<br>
+        <strong>Token:</strong> ${driver.token}
+      </p><hr>
+    `;
+  });
+
+  // Populate passengers
+  passengerSection.innerHTML = "<h3>Default Passengers</h3>";
+  defaultPassengers.forEach(passenger => {
+    passengerSection.innerHTML += `
+      <p>
+        <strong>Name:</strong> ${passenger.name}<br>
+        <strong>Phone:</strong> ${passenger.phone}<br>
+        <strong>Email:</strong> ${passenger.email}
+      </p><hr>
+    `;
+  });
+}
+
+// Call displayDefaultData on page load
+window.onload = displayDefaultData;

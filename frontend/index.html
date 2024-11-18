@@ -5,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RideSafe</title>
   <link rel="stylesheet" href="index.css">
+  <style>
+    /* Hide the default data section completely from view */
+    #default-data {
+      display: none; /* Makes it invisible and removes it from layout flow */
+      visibility: hidden; /* Ensures it's not visually accessible */
+    }
+  </style>
 </head>
 <body>
   <header>
     <nav>
       <div class="logo">
-        <img src="logo.png" alt="RideSafe Logo" />
+        <img src="../ridesafe.png" alt="RideSafe Logo" />
       </div>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -45,6 +52,12 @@
         <button onclick="navigateToPassengerLogin()">Login</button>
         <button onclick="navigateToPassengerSignup()">Signup</button>
       </div>
+    </section>
+
+    <!-- Default Data Section (Hidden) -->
+    <section id="default-data">
+      <div id="drivers"></div>
+      <div id="passengers"></div>
     </section>
 
     <section id="info">

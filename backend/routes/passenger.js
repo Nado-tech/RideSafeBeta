@@ -5,23 +5,35 @@ const axios = require('axios');  // Import axios to make HTTP requests
 const Passenger = require('../models/passenger');
 const router = express.Router();
 
-// NIN API endpoint and key (replace with actual endpoint and API key)
-const NIN_API_URL = 'https://nin-api.com/validate';
-const NIN_API_KEY = 'your-nin-api-key';  // Replace with your NIN API key
+// VerifyMe Nigeria API configuration
+const VERIFYME_BASE_URL = "https://api-sandbox.verifyme.ng";
+const VERIFYME_API_KEY = "your-verifyme-api-key"; // Replace with your API key, not yet given
 
 // Helper function to verify NIN via API
-async function verifyNIN(nin) {
+async function verifyIdentity(identityType, identityNumber) {
   try {
-    const response = await axios.post(NIN_API_URL, {
-      nin: nin,
-      apiKey: NIN_API_KEY,
-    });
-    return response.data;  // Return response data from NIN API
+    const response = await axios.post(
+      `${VERIFYME_BASE_URL}/v1/verifications/${identityType}`,
+      { id: identityNumber },
+      {
+        headers: {
+          Authorization: `Bearer ${VERIFYME_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    if (response.data && response.data.success) {
+      return response.data.data; // Return verified data
+    } else {
+      throw new Error('Verification failed');
+    }
   } catch (error) {
-    console.error('Error verifying NIN:', error);
-    throw new Error('Unable to verify NIN');
+    console.error('Error verifying identity:', error.response?.data || error.message);
+    throw new Error('Unable to verify identity');
   }
 }
+
 
 // Passenger signup route
 router.post('/signup', async (req, res) => {
@@ -29,7 +41,7 @@ router.post('/signup', async (req, res) => {
 
   // Step 1: Verify the NIN using the NIN API
   try {
-    const ninVerification = await verifyNIN(nin);
+    const ninVerification = await verifyIdentity(nin);
     if (!ninVerification.isValid) {
       return res.status(400).json({ message: 'Invalid NIN' });
     }

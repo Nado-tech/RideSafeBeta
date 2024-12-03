@@ -11,6 +11,7 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false })); // To handle URL-encoded data for USSD
 
 // Passenger Routes
 app.use('/passenger', passengerRoutes);
@@ -26,6 +27,47 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
   .catch(err => {
     console.error('Database connection error:', err);
   });
+
+// Define the Verification Code schema and model
+const verificationCodeSchema = new mongoose.Schema({
+  phoneNumber: { type: String, required: true },
+  code: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now, expires: 300 }, // Code expires in 5 minutes
+});
+
+const VerificationCode = mongoose.model('VerificationCode', verificationCodeSchema);
+
+// USSD Route
+app.post('/ussd', async (req, res) => {
+  const { sessionId, serviceCode, phoneNumber, text } = req.body;
+
+  let response = '';
+
+  try {
+    if (text === '') {
+      // Prompt user to enter verification code
+      response = `CON Welcome to RideSafe!
+      Enter your verification code:`;
+    } else {
+      // Check if the code exists for the given phone number
+      const validCode = await VerificationCode.findOne({ phoneNumber, code: text });
+
+      if (validCode) {
+        response = `END Verification successful. Thank you!`;
+
+        // Delete the code after successful verification
+        await VerificationCode.deleteOne({ _id: validCode._id });
+      } else {
+        response = `END Invalid code. Please try again.`;
+      }
+    }
+
+    res.send(response);
+  } catch (error) {
+    console.error('Error handling USSD request:', error);
+    res.status(500).send('END Internal server error.');
+  }
+});
 
 // Define the contact schema and model
 const contactSchema = new mongoose.Schema({

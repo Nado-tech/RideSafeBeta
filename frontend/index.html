@@ -5,13 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RideSafe</title>
   <link rel="stylesheet" href="index.css">
-  <style>
-    /* Hide the default data section completely from view */
-    #default-data {
-      display: none; /* Makes it invisible and removes it from layout flow */
-      visibility: hidden; /* Ensures it's not visually accessible */
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -40,24 +33,33 @@
       <p id="verificationResult"></p>
     </section>
 
-    <!-- Login and Signup buttons for both drivers and passengers -->
-    <section id="auth-buttons">
-      <div>
-        <h3>For Drivers</h3>
-        <button onclick="navigateToDriverLogin()">Login</button>
-        <button onclick="navigateToDriverSignup()">Signup</button>
-      </div>
-      <div>
-        <h3>For Passengers</h3>
-        <button onclick="navigateToPassengerLogin()">Login</button>
-        <button onclick="navigateToPassengerSignup()">Signup</button>
+    <!-- Login and Signup Toggles -->
+    <section id="auth-toggle">
+      <button onclick="toggleAuthOptions()">Toggle Driver/Passenger Options</button>
+      <div id="auth-options" style="display: none;">
+        <div>
+          <h3>Driver</h3>
+          <button onclick="navigateToDriverLogin()">Login</button>
+          <button onclick="navigateToDriverSignup()">Signup</button>
+        </div>
+        <div>
+          <h3>Passenger</h3>
+          <button onclick="navigateToPassengerLogin()">Login</button>
+          <button onclick="navigateToPassengerSignup()">Signup</button>
+        </div>
       </div>
     </section>
 
-    <!-- Default Data Section (Hidden) -->
-    <section id="default-data">
-      <div id="drivers"></div>
-      <div id="passengers"></div>
+    <!-- Report Suspicious Activity -->
+    <section id="report-section">
+      <button onclick="showReportForm()">Report Suspicious Activity</button>
+      <form id="report-form" style="display: none;">
+        <h3>Report Suspicious Activity</h3>
+        <textarea placeholder="Describe the activity..." required></textarea>
+        <input type="file" accept="image/*" />
+        <button type="submit">Submit Report</button>
+        <button type="button" onclick="hideReportForm()">Cancel</button>
+      </form>
     </section>
 
     <section id="info">

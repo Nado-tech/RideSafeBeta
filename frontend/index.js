@@ -129,6 +129,21 @@ function displayDefaultData() {
     `;
   });
 }
+// Toggle between Driver and Passenger options
+function toggleAuthOptions() {
+  const authOptions = document.getElementById("auth-options");
+  authOptions.style.display = authOptions.style.display === "none" ? "block" : "none";
+}
+
+// Show Report Form
+function showReportForm() {
+  document.getElementById("report-form").style.display = "block";
+}
+
+// Hide Report Form
+function hideReportForm() {
+  document.getElementById("report-form").style.display = "none";
+}
 
 // Call displayDefaultData on page load
 window.onload = displayDefaultData;

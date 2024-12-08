@@ -28,18 +28,18 @@ document.getElementById('driverSignupForm').addEventListener('submit', async fun
       throw new Error('NIN is invalid');
     }
 
-    // Validate the plate number via the FRSC API
-    const plateResponse = await fetch('/api/driver/verify-plate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ plateNumber })
-    });
+    // // Validate the plate number via the FRSC API
+    // const plateResponse = await fetch('/api/driver/verify-plate', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ plateNumber })
+    // });
 
-    const plateData = await plateResponse.json();
+    // const plateData = await plateResponse.json();
 
-    if (!plateData.isValid) {
-      throw new Error('Plate number is invalid');
-    }
+    // if (!plateData.isValid) {
+    //   throw new Error('Plate number is invalid');
+    // }
 
     // If both NIN and plate number are valid, proceed with registration
     const signupResponse = await fetch('/api/driver/signup', {

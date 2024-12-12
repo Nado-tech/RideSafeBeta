@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Dashboard</title>
+  <script>// Backend API Base URL
+    const API_BASE_URL = "http://localhost:5000/v1/driver";
+    
+    // Driver ID (Assume this is stored in localStorage or fetched during login)
+    const driverId = localStorage.getItem("driverId");
+    
+    // Elements
+    const driverTokenEl = document.getElementById("driverToken");
+    const tokenExpirationEl = document.getElementById("tokenExpiration");
+    const renewTokenBtn = document.getElementById("renewTokenBtn");
+    
+    // Fetch driver details from the backend
+    async function fetchDriverDetails() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/${driverId}`);
+        const data = await response.json();
+    
+        if (response.ok) {
+          // Update UI with token details
+          driverTokenEl.textContent = data.token;
+          tokenExpirationEl.textContent = new Date(data.tokenExpiration).toLocaleDateString();
+    
+          // Check if token is expired and enable renewal
+          const now = new Date();
+          const tokenExpiration = new Date(data.tokenExpiration);
+          if (now > tokenExpiration) {
+            renewTokenBtn.disabled = false;
+            renewTokenBtn.textContent = "Renew Token";
+          } else {
+            renewTokenBtn.disabled = true;
+            renewTokenBtn.textContent = "Token Valid";
+          }
+        } else {
+          alert(data.message || "Failed to fetch driver details.");
+        }
+      } catch (error) {
+        console.error("Error fetching driver details:", error);
+        alert("Unable to fetch driver details. Please try again.");
+      }
+    }
+    
+    // Renew the token
+    async function renewToken() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/${driverId}/renew-token`, {
+          method: "POST",
+        });
+        const data = await response.json();
+    
+        if (response.ok) {
+          alert("Token renewed successfully!");
+          fetchDriverDetails(); // Refresh token details
+        } else {
+          alert(data.message || "Failed to renew token.");
+        }
+      } catch (error) {
+        console.error("Error renewing token:", error);
+        alert("Unable to renew token. Please try again.");
+      }
+    }
+    
+    // Event listener for token renewal
+    renewTokenBtn.addEventListener("click", renewToken);
+    
+    // Fetch driver details on page load
+    fetchDriverDetails();
+    </script>
+</head>
+<body>
+    
+  <h1>Driver Dashboard</h1>
+  <div id="tokenInfo">
+    <p><strong>Token:</strong> <span id="driverToken">Loading...</span></p>
+    <p><strong>Expires On:</strong> <span id="tokenExpiration">Loading...</span></p>
+    <button id="renewTokenBtn" disabled>Renew Token</button>
+  </div>
+</body>
+</html>

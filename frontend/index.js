@@ -1,4 +1,4 @@
-// Verify Token Function
+// Function to verify token
 async function verifyToken() {
   const token = prompt("Enter a 5-digit token:");
 
@@ -41,6 +41,32 @@ async function verifyToken() {
   }
 }
 
+// Navigate to Login and Signup pages
+function navigateToDriverLogin() {
+  window.location.href = "driver-login.html";
+}
+
+function navigateToDriverSignup() {
+  window.location.href = "driver-signup.html";
+}
+
+function navigateToPassengerLogin() {
+  window.location.href = "passenger-login.html";
+}
+
+function navigateToPassengerSignup() {
+  window.location.href = "passenger-signup.html";
+}
+
+// Show or hide authentication options
+function toggleAuthOptions() {
+  const authOptions = document.getElementById("auth-options");
+  authOptions.style.display =
+    authOptions.style.display === "none" || authOptions.style.display === ""
+      ? "block"
+      : "none";
+}
+
 // Simulated security functions
 function startSecurityProtocol() {
   openCameraAndCapture();
@@ -57,4 +83,11 @@ function shareLocationAndAlertAuthorities() {
   alert("Simulated: Location shared with authorities.");
 }
 
-verifyToken();
+// Report form functions
+function showReportForm() {
+  document.getElementById("report-form").style.display = "block";
+}
+
+function hideReportForm() {
+  document.getElementById("report-form").style.display = "none";
+}

@@ -57,5 +57,4 @@ function shareLocationAndAlertAuthorities() {
   alert("Simulated: Location shared with authorities.");
 }
 
-// Example usage (trigger the verify token functionality)
 verifyToken();

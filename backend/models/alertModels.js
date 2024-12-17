@@ -1,14 +1,24 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db');
 
-// Define the schema for alert data
-const alertSchema = new mongoose.Schema({
-  photo: String, // Store the photo as a base64 string or link to a file
-  latitude: Number,
-  longitude: Number,
-  timestamp: { type: Date, default: Date.now },
+const Alert = sequelize.define('Alert', {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  photo: {
+    type: DataTypes.BLOB,
+    allowNull: true,
+  },
+  latitude: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  longitude: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
 });
-
-// Create the Alert model based on the schema
-const Alert = mongoose.model('Alert', alertSchema);
 
 module.exports = Alert;

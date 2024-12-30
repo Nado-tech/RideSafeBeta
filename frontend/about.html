@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RideSafe</title>
+    <style>/* index.css */
+
+        /* General Reset */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        
+        body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          color: #333;
+          background-color: #f9f9f9;
+          padding: 0;
+          margin: 0;
+        }
+        
+        header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header ul {
+    display: flex;
+    list-style: none;
+}
+
+header ul li {
+    margin-left: 20px;
+}
+
+header ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+header .logo img {
+    width: 150px;
+}
+        
+        header h1 {
+          margin: 10px 0;
+          font-size: 2.5rem;
+        }
+        
+        header p {
+          margin: 5px 0;
+          font-style: italic;
+        }
+        
+        nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #005a9e;
+          padding: 10px 20px;
+          flex-wrap: wrap;
+        }
+        
+        nav .logo img {
+          height: 50px;
+        }
+        
+        nav ul {
+          list-style: none;
+          display: flex;
+          margin: 0;
+          padding: 0;
+        }
+        
+        nav ul li {
+          margin: 0 10px;
+        }
+        
+        nav ul li a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 16px;
+        }
+        
+        main {
+          max-width: 800px;
+          margin: 20px auto;
+          padding: 20px;
+          background-color: #fff;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          border-radius: 5px;
+        }
+        
+        main p {
+          margin-bottom: 20px;
+          text-align: justify;
+        }
+        
+        footer {
+          text-align: center;
+          background-color: #005a9e;
+          color: #fff;
+          padding: 10px 0;
+          margin-top: 20px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+          nav ul {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        
+          nav ul li {
+            margin: 5px;
+          }
+        
+          main {
+            max-width: 90%;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          nav {
+            flex-direction: column;
+            align-items: center;
+          }
+        
+          nav .logo img {
+            height: 40px;
+          }
+        
+          nav ul {
+            flex-direction: column;
+            margin-top: 10px;
+          }
+        
+          nav ul li {
+            margin: 10px 0;
+          }
+        
+          header h1 {
+            font-size: 24px;
+          }
+        
+          header p {
+            font-size: 14px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          header h1 {
+            font-size: 20px;
+          }
+        
+          header p {
+            font-size: 12px;
+          }
+        
+          main {
+            padding: 15px;
+          }
+        }
+        </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="1731937557133.jpg" alt="RideSafe Logo" sizes=""/>
+              </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+      </nav>
+      <section class="hero"></section>
+      <h1>RIDESAFE</h1>
+      <p>NO CHANCE FOR ONE CHANCE</p>
+    </header>
+<h1>ABOUT US</h1>
+    <main>
+      <p>
+        RideSafe is a digital platform designed to enhance the safety of
+        ride-sharing services. By requiring all drivers and their vehicles to
+        register, RideSafe creates a transparent database that can be accessed
+        by passengers. This enables users to verify the identity of their driver
+        and vehicle details through a unique five-digit code. By promoting
+        transparency and accountability, RideSafe aims to reduce the risk of
+        incidents and provide peace of mind to both drivers and passengers.
+      </p>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 RideSafe</p>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>

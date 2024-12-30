@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RideSafe</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="1731937557133.jpg" alt="RideSafe Logo">
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <h1>RIDESAFE</h1>
+      <p>NO CHANCE FOR ONE CHANCE</p>
+    </section>
+  </header>
+
+  <main>
+    <!-- Quick Token Verification Section -->
+    <section id="quick-verify">
+      <h2>Quick Token Verification</h2>
+      <input type="text" id="tokenInput" placeholder="Enter 5-digit token" maxlength="5">
+      <button onclick="verifyToken()">Verify</button>
+      <p id="verificationResult"></p>
+    </section>
+
+    <!-- Login and Signup Toggles -->
+    <section id="auth-toggle">
+      <button onclick="toggleAuthOptions()">Login/Signup</button>
+      <div id="auth-options" style="display: none;">
+        <div>
+          <h3>Driver</h3>
+          <button onclick="navigateToDriverLogin()">Login</button>
+          <button onclick="navigateToDriverSignup()">Signup</button>
+        </div>
+        <div>
+          <h3>Passenger</h3>
+          <button onclick="navigateToPassengerLogin()">Login</button>
+          <button onclick="navigateToPassengerSignup()">Signup</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Report Suspicious Activity -->
+    <section id="report-section">
+      <button onclick="showReportForm()">Report Suspicious Activity</button>
+      <form id="report-form" style="display: none;">
+        <h3>Report Suspicious Activity</h3>
+        <textarea placeholder="Describe the activity..." required></textarea>
+        <input type="file" accept="image/*">
+        <button type="submit">Submit Report</button>
+        <button type="button" onclick="hideReportForm()">Cancel</button>
+      </form>
+    </section>
+
+    <section id="info">
+      <h2>How it Works</h2>
+      <p>Drivers can register and receive a unique 5-digit token. Passengers can verify drivers by entering this token for easy identification.</p>
+      <p>Passengers/commuters can also verify a car authenticity by using the USSD code *#.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 RideSafe</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>

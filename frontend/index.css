@@ -133,4 +133,26 @@
     background-color: #333;
     color: white;
   }
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Spacing between icons */
+    margin-top: 10px;
+  }
+  
+  .footer-icons a {
+    text-decoration: none;
+  }
+  
+  .footer-icons .icon {
+    width: 30px; /* Adjust size of the icons */
+    height: 30px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  /* Add hover effect for better interaction */
+  .footer-icons .icon:hover {
+    transform: scale(1.2); /* Slightly enlarge the icon on hover */
+    filter: brightness(1.2); /* Make the icon a bit brighter */
+  }
   

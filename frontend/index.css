@@ -88,6 +88,7 @@
   #auth-toggle {
     text-align: center;
     margin: 2rem 0;
+    border: #4a90e2;
   }
   
   #auth-options div {
